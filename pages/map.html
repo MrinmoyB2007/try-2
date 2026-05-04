@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Billboard Map</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <link rel="stylesheet" href="../css/style2.css">
+</head>
+<body>
+
+  <!-- ------------------------NAVBAR----------------------------->
+
+
+    
+<nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+  <div class="container-fluid">
+
+    <!-- Logo + Brand -->
+    <a class="navbar-brand" href="#">
+      <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="logo">
+      CHIRU Ad Service
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="../index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Browse Ads</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/map.html">Book Now</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">How it Works</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- MAP -->
+<section class="map-section">
+  <div id="map"></div>
+</section>
+
+<!-- CARD -->
+<div id="infoCard" class="info-card">
+  <img src="images/slide1.jpg" id="cardImg">
+  <h5 id="cardTitle">Billboard Location</h5>
+  <button class="btn btn-warning" onclick="openBooking()">Book Now</button>
+</div>
+
+<!-- MODAL -->
+<div id="bookingModal" class="booking-modal">
+  <div class="modal-content-custom">
+
+    <!-- SVG HEADER -->
+    <div class="modal-header-svg">
+      <svg viewBox="0 0 500 120" preserveAspectRatio="none">
+        <path d="M0,40 C150,120 350,0 500,80 L500,0 L0,0 Z" fill="#ffc107"></path>
+      </svg>
+      <h4>Book Billboard</h4>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="booking-body">
+      <p>Select number of days</p>
+
+      <div class="range-box">
+        <input type="range" id="daysRange" min="15" max="243" value="15">
+        <div class="range-labels">
+          <span>15 Days</span>
+          <span>6 Months</span>
+        </div>
+      </div>
+
+      <!-- NUMBER INPUT -->
+      <input type="number" id="daysInput" min="15" max="243" value="15" class="form-control mt-3">
+
+      <!-- PRICE -->
+      <h5 class="price">₹ <span id="price">30000</span></h5>
+
+      <!-- BUTTONS -->
+      <div class="mt-3">
+        <button class="btn btn-success w-100 mb-2">Confirm Booking</button>
+        <button class="btn btn-outline-dark w-100" onclick="closeBooking()">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="how-it-works glass">
+  <div class="container text-center">
+
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Book your billboard in just 3 simple steps</p>
+
+    <div class="row mt-5">
+
+      <div class="col-md-4">
+        <div class="step-card glass-card">
+          <div class="step-number">1</div>
+
+          <svg viewBox="0 0 24 24" class="step-icon">
+            <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zM12 11a2 2 0 110-4 2 2 0 010 4z"/>
+          </svg>
+
+          <h5>Select Location</h5>
+          <p class="pi" id="pi">Choose a billboard from the interactive map.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="step-card glass-card">
+          <div class="step-number">2</div>
+
+          <svg viewBox="0 0 24 24" class="step-icon">
+            <path d="M7 2v2H5a2 2 0 00-2 2v2h18V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zm14 8H3v10a2 2 0 002 2h14a2 2 0 002-2V10z"/>
+          </svg>
+
+          <h5>Choose Duration</h5>
+          <p class="pi" id="pi">Select number of days using the slider.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="step-card glass-card">
+          <div class="step-number">3</div>
+
+          <svg viewBox="0 0 24 24" class="step-icon">
+            <path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/>
+          </svg>
+
+          <h5>Confirm Booking</h5>
+          <p class="pi" id="pi">Finalize your booking instantly.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left -->
+    <div class="footer-brand">
+      <h3>Chiru AD Service</h3>
+      <p>Smart billboard advertising platform for modern businesses.</p>
+    </div>
+
+    <!-- Links -->
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Locations</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="footer-social">
+      <h5>Follow Us</h5>
+      <div class="social-icons">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 Chiru AD Service. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<!-- JS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../js/script2.js"></script>
+
+</body>
+</html>
